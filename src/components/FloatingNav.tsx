@@ -1,11 +1,11 @@
-import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Search, Bell, Briefcase, UserCircle } from 'lucide-react';
+import React from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { Home, Search, Bell, Briefcase, UserCircle } from 'lucide-react'
 
 export default function FloatingNav() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [notifications] = React.useState(3);
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [notifications] = React.useState(3)
 
   const navItems = [
     { id: 'home', icon: Home, label: 'Home', path: '/' },
@@ -16,14 +16,14 @@ export default function FloatingNav() {
       icon: Bell,
       label: 'Alerts',
       badge: notifications,
-      path: '/messages',
+      path: '/notifications',
     },
     { id: 'profile', icon: UserCircle, label: 'Profile', path: '/profile' },
-  ];
+  ]
 
-  const handleNavClick = (path) => {
-    navigate(path);
-  };
+  const handleNavClick = (path: string) => {
+    navigate(path)
+  }
 
   return (
     <nav className="floating-nav shadow-lg">
@@ -47,5 +47,5 @@ export default function FloatingNav() {
         </button>
       ))}
     </nav>
-  );
+  )
 }
