@@ -1,23 +1,23 @@
-import React from 'react';
-import { LucideIcon } from 'lucide-react';
+import React from 'react'
+import { LucideIcon } from 'lucide-react'
 
 interface NotificationAction {
-  label: string;
-  primary?: boolean;
-  onClick: () => void;
+  label: string
+  primary?: boolean
+  onClick: () => void
 }
 
 interface NotificationItemProps {
-  id: number;
-  type: string;
-  title: string;
-  message: string;
-  time: string;
-  read: boolean;
-  icon: LucideIcon;
-  color: string;
-  bgColor: string;
-  actions: NotificationAction[];
+  id: number
+  type: string
+  title: string
+  message: string
+  time: string
+  read: boolean
+  icon: LucideIcon
+  color: string
+  bgColor: string
+  actions: NotificationAction[]
 }
 
 export default function NotificationItem({
@@ -37,16 +37,18 @@ export default function NotificationItem({
       }`}
     >
       <div className="flex gap-4">
-        <div className={`${bgColor} p-2 sm:p-3 rounded-xl flex-shrink-0`}>
+        <div
+          className={`${bgColor} p-2 sm:p-3 rounded-xl flex-shrink-0 h-[100%]`}
+        >
           <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${color}`} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <h3 className="font-semibold text-gray-900 truncate">
-                {title}
-              </h3>
-              <p className="text-gray-600 mt-1 text-sm sm:text-base">{message}</p>
+              <h3 className="font-semibold text-gray-900 truncate">{title}</h3>
+              <p className="text-gray-600 mt-1 text-sm sm:text-base">
+                {message}
+              </p>
             </div>
             <span className="text-xs sm:text-sm text-gray-500 whitespace-nowrap flex-shrink-0">
               {time}
@@ -68,5 +70,5 @@ export default function NotificationItem({
         </div>
       </div>
     </div>
-  );
+  )
 }

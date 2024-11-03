@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { MapPin, Menu, X, Bell } from 'lucide-react';
+import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { MapPin, Menu, X, Bell } from 'lucide-react'
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-  const [notifications] = useState(3);
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const location = useLocation()
+  const [notifications] = useState(3)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navItems = [
     { path: '/services', label: 'Services' },
     { path: '/jobs', label: 'Jobs' },
     { path: '/categories', label: 'Categories' },
     { path: '/help', label: 'Help' },
-  ];
+  ]
 
   return (
     <nav
@@ -53,22 +53,34 @@ export default function Navbar() {
                 to={item.path}
                 className={`nav-link ${
                   isScrolled ? 'text-gray-700' : 'text-white'
-                } ${location.pathname === item.path ? 'after:scale-x-100' : ''}`}
+                } ${
+                  location.pathname === item.path ? 'after:scale-x-100' : ''
+                }`}
               >
                 {item.label}
               </Link>
             ))}
-            <Link to="/post-job" className="btn-primary">Post a Job</Link>
+            <Link to="/post-job" className="btn-primary">
+              Post a Job
+            </Link>
             <Link to="/notifications" className="relative">
-              <Bell className={`h-6 w-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} />
+              <Bell
+                className={`h-6 w-6 ${
+                  isScrolled ? 'text-gray-700' : 'text-white'
+                }`}
+              />
               {notifications > 0 && (
                 <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
                   {notifications}
                 </span>
               )}
             </Link>
-            <Link to="/login" className="btn-secondary">Sign In</Link>
-            <Link to="/register" className="btn-primary">Sign Up</Link>
+            <Link to="/login" className="btn-secondary">
+              Sign In
+            </Link>
+            <Link to="/register" className="btn-primary">
+              Sign Up
+            </Link>
           </div>
 
           <div className="md:hidden">
@@ -139,5 +151,5 @@ export default function Navbar() {
         </div>
       )}
     </nav>
-  );
+  )
 }
